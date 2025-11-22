@@ -14,7 +14,6 @@ public class Emprestimo {
     private boolean statusAtrasado;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucao; // Data PREVISTA para devolução
-
     // Construtor
     public Emprestimo(int idItem, String usuario, String itemEmprestado,
                       boolean statusDevolvido, boolean statusAtrasado,

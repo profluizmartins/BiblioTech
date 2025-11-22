@@ -26,18 +26,10 @@ public class EmprestimoDao {
                                  LocalDate dataEmprestimo, LocalDate dataDevolucao) {
         emprestimos.add(new Emprestimo(proximoId++, usuario, itemEmprestado,
                 statusDevolvido, statusAtrasado, dataEmprestimo, dataDevolucao));
-    }
+    } // ACHO QUE NÃO PRECISA FAZER ESSE ARRAYLIST
 
 
-    public void CalcularAtraso(LocalDate dataAtual, LocalDate dataDevolucao, boolean statusAtrasado) {
-        if (dataDevolucao.isBefore(dataAtual)) {
-            long diasAtraso = ChronoUnit.DAYS.between(dataDevolucao, dataAtual);
-            statusAtrasado = true;
-        } else {
 
-            statusAtrasado = false;
-        }
-    }
 
     public Emprestimo buscarPorId(int idItem) {
         for (Emprestimo e : emprestimos) {

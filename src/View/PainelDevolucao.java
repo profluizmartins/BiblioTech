@@ -1,7 +1,8 @@
 package View;
 
 import Controller.DevolucaoController;
-
+import Model.Emprestimo;
+import Model.Usuario;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
