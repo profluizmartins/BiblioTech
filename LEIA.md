@@ -1,0 +1,1 @@
+Para testar as partes de pesquisa criei uma estruturazinha para testar as coisas. Desconsidere as partes desnecessárias ao nosso grupo
