@@ -7,8 +7,20 @@ import java.util.*;
 //  !!ATENÇÃO!!  Isso aqui é só testando, Tem muita coisa errada, e era só pra ver se o View funciona, não levem a sério
 //
 
-public class MainTesteGrupo8{
+/**
+ * Classe Main pra rodar o teste do Grupo 8 (Relatórios e Busca)
+ * Basicamente sobe a janela e conecta as Views com uns dados falsos (Mock)
+ * só para a gente ver se a interface tá funcionando sem precisar do backend real agora
+ * * @author Grupo 8
+ */
+public class MainTeste{
 
+    /**
+     * Roda a aplicação de teste.
+     * Cria o JFrame, instancia os painéis e define o comportamento dos botões
+     * usando dados hardcoded (fixos) pra simular o sistema rodando
+     * * @param args Argumentos de linha de comando (não usa nada aqui)
+     */
     public static void main(String[] args){
         // 1. Configurar Janela de Teste
         JFrame frame=new JFrame("Ambiente de Teste - Grupo 8 (Relatórios)");
@@ -24,6 +36,12 @@ public class MainTesteGrupo8{
         
         //Simula o Repositório de Livros (Grupo 2)
         AcervoRepositorio acervoFake=new AcervoRepositorio() {
+            /**
+             * Finge que busca por título
+             * Retorna uns livros zoados pra testar a JTable
+             * * @param titulo O que o usuário digitou (mas a gente ignora e devolve tudo igual)
+             * @return Lista de objetos fake pra preencher a tabela.
+             */
             @Override
             public List<Object>buscarPorTitulo(String titulo) {
                 // Retorna dados falsos só para mostrar na tabela
@@ -33,8 +51,23 @@ public class MainTesteGrupo8{
                 Object[] livro4={"4","Como dar aula","Irineu","2208","Emprestado"};
                 return Arrays.asList(livro1,livro2,livro3,livro4);
             }
+            
+            /**
+             * Busca por autor (Não implementado pra esse teste).
+             * @return Lista vazia.
+             */
             @Override public List<Object>buscarPorAutor(String autor){return new ArrayList<>();}
+            
+            /**
+             * Busca por ano (Não implementado pra esse teste).
+             * @return Lista vazia.
+             */
             @Override public List<Object>buscarPorAno(int ano){return new ArrayList<>();}
+            
+            /**
+             * Lista tudo chamando o método fake de busca por título.
+             * @return A mesma lista hardcoded de cima.
+             */
             @Override public List<Object>listarTodos(){return buscarPorTitulo("");}
         };
 
@@ -53,7 +86,6 @@ public class MainTesteGrupo8{
         });
 
         
-
         //Nenhuma ação aqui é de verdade, dps a gente faz
         painelRelatorios.addAcaoTopLivros(e->{
             new TelaRelatorioDialog(frame,"Top 10-Simulado", 

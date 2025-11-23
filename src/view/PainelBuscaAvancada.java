@@ -5,6 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 
+/**
+ * Painel principal da tela de Busca Avançada.
+ * Aqui ficam os campos de filtro (Título, Autor, Ano) na parte de cima
+ * e a JTable no meio pra mostrar os resultados que voltaram do banco (ou do mock)
+ */
 public class PainelBuscaAvancada extends JPanel {
 
     private JTextField Titulo;
@@ -15,8 +20,15 @@ public class PainelBuscaAvancada extends JPanel {
     private DefaultTableModel Model;
     private JLabel Status;
 
+    /**
+     * Construtor que já inicializa os componentes e monta o layout da tela
+     */
     public PainelBuscaAvancada(){inicializarComponentes();configurarLayout();}
 
+    /**
+     * Instancia os TextFields, o botão e configura a Tabela.
+     * Define as larguras das colunas e trava a edição das células pra ser só leitura.
+     */
     private void inicializarComponentes() {
         Titulo=new JTextField(20);
         Autor=new JTextField(20);
@@ -38,6 +50,10 @@ public class PainelBuscaAvancada extends JPanel {
         Status=new JLabel("Aguardando busca...");
     }
 
+    /**
+     * Organiza os painéis usando BorderLayout.
+     * Coloca os filtros no Norte, a tabela no Centro (com scroll) e o status no Sul.
+     */
     private void configurarLayout(){
         this.setLayout(new BorderLayout(10,10));
 
@@ -63,21 +79,43 @@ public class PainelBuscaAvancada extends JPanel {
     }
 
     //Métodos do Controller pra View
+    
+    /**
+     * @return O que o usuário digitou no campo Título.
+     */
     public String getTitulo(){return Titulo.getText();}
+    
+    /**
+     * @return O que o usuário digitou no campo Autor.
+     */
     public String getAutor(){return Autor.getText();}
+    
+    /**
+     * @return O que o usuário digitou no campo Ano.
+     */
     public String getAno(){return Ano.getText();}
 
+    /**
+     * Registra quem vai escutar o clique no botão "Pesquisar".
+     * @param acao O listener do Controller que faz a busca acontecer.
+     */
     public void addAcaoBuscar(ActionListener acao){bBuscar.addActionListener(acao);}
 
     /**
-     * Limpa a tabela e adiciona novas linhas
-     * @param dados Matriz dos dados etc
+     * Limpa a tabela antiga e preenche com as novas linhas que vieram da busca.
+     * Também atualiza o texto de status lá embaixo.
+     * @param dados Matriz de objetos (Object[][]) pronta pra jogar no DefaultTableModel.
      */
     public void atualizarTabela(Object[][] dados){
         Model.setRowCount(0); //Limpa a tabela
         for (Object[] linha:dados) {Model.addRow(linha);}
         Status.setText("Exibindo "+dados.length+" resultados para a busca.");
     }
+    
+    /**
+     * Exibe um pop-up de erro simples caso dê ruim na validação ou na busca.
+     * @param mensagem O texto do erro pra mostrar pro usuário.
+     */
     public void exibirMensagemErro(String mensagem){
         JOptionPane.showMessageDialog(this,mensagem,"Erro",JOptionPane.ERROR_MESSAGE);
     }
