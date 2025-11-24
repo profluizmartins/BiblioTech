@@ -3,6 +3,7 @@ package Model;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Classe que irá gerenciar os empréstimos
@@ -38,6 +39,10 @@ public class EmprestimoDao {
             }
         }
         return null;
+    }
+
+    public List<Emprestimo> listarProduto(){
+        return emprestimos;
     }
 
     public int getProximoId() {

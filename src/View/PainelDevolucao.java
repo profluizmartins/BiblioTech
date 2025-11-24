@@ -33,8 +33,6 @@ public class PainelDevolucao extends JPanel {
         this.add(btnConfirmar);
 
         this.setVisible(true);
-
-
     }
 
 
