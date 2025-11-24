@@ -34,7 +34,27 @@ public class PainelDevolucao extends JPanel {
 
         this.setVisible(true);
     }
+    public void mostrarProduto(Emprestimo emprestimos) {
+        if (emprestimos != null) {
+            JOptionPane.showMessageDialog(null,
+                    "ID: " + emprestimos.getIdItem()+ "\n"+
+                            "Nome: " + emprestimos.getNome()+"\n"+
+                            "Preco: " + emprestimos.getPreco()+"\n"+
+                            "Preco: " + emprestimos.getPreco()+"\n"+
+                            "Preco: " + emprestimos.getPreco()+"\n"+
+                            "---------------",
+                    "Estoque",
+                    JOptionPane.INFORMATION_MESSAGE);
 
+
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Produto não encontrado.",
+                    "Erro",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+        }
+    }
 
 
     public void addBtnConfirmarListener(ActionListener listener) {
