@@ -5,7 +5,7 @@ import java.util.List;
  * Parte que precisa do Grupo 2, isso é só a Estrutura que a gente vai usar de base
  */
 
-public interface AcervoRepositorio {
+public interface IAcervoRepositorio {
 
     /**
      * Busca itens no acervo pelo título (parcial ou completo).

@@ -35,7 +35,7 @@ public class MainTeste{
 
         
         //Simula o Repositório de Livros (Grupo 2)
-        AcervoRepositorio acervoFake=new AcervoRepositorio() {
+        IAcervoRepositorio acervoFake=new IAcervoRepositorio() {
             /**
              * Finge que busca por título
              * Retorna uns livros zoados pra testar a JTable

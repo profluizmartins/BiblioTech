@@ -5,7 +5,7 @@ import java.util.List;
  * Parte que precisa do Grupo 3, isso é só a Estrutura que a gente vai usar de base
  */
 
-public interface UsuarioRepositorio {
+public interface IUsuarioRepositorio {
 
     /**
      * Lista todos os usuários que possuem multas pendentes.
