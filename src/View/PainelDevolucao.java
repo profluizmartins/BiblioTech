@@ -1,55 +1,61 @@
 package View;
 
 import Controller.DevolucaoController;
-import Model.Emprestimo;
-import Model.Usuario;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PainelDevolucao extends JFrame {
-    private JFrame frame;
-    private JPanel principalPanel;
+public class PainelDevolucao extends JPanel {
+
     private JPanel informationPanel;
+    private JTextField txtIdItem;
+    private JLabel idDevolucao;
+    private JLabel usuario;
+    private JLabel itemEmprestado;
+
     private JTextArea areaDetalhes;
     private DevolucaoController controller;
+    private JButton btnConfirmar, btnConfirmarDevolucao;
 
     public PainelDevolucao() {
-        frame = new JFrame();
-        principalPanel = new JPanel();
-        informationPanel = new JPanel();
-        principalPanel.setLayout(new FlowLayout());
 
-        JLabel idDevolucao = new JLabel("Id do Item:");
-        idDevolucao.setText("Id do Item:" );
-        JTextField txtIdItem = new JTextField(15);
-        JButton btnConfirmar = new JButton("Confirmar");
-        JButton btnConfirmarDevolucao = new JButton("Confirmar devolução");
-        principalPanel.add(idDevolucao);
-        principalPanel.add(txtIdItem);
-        principalPanel.add(btnConfirmar);
-        frame.setTitle("Sistema de Devolução");
-        frame.add(principalPanel);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        btnConfirmar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    int id = Integer.parseInt(txtIdItem.getText());
-                    controller.realizarDevolucao(id);
-                    txtIdItem.setText(""); // Limpa campo
-                    //frame.setVisible(false);
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Digite um número válido.");
-                }
-            }
-        });
+        informationPanel = new JPanel();
+        this.setLayout(new FlowLayout());
+
+        idDevolucao = new JLabel("Id do Item:");
+
+        txtIdItem = new JTextField(15);
+        btnConfirmar = new JButton("Confirmar");
+        btnConfirmarDevolucao = new JButton("Confirmar devolução");
+        this.add(idDevolucao);
+        this.add(txtIdItem);
+        this.add(btnConfirmar);
+
+        this.setVisible(true);
+
+
     }
 
-    public void msg(String mensagem) {
+
+
+    public void addBtnConfirmarListener(ActionListener listener) {
+        this.btnConfirmar.addActionListener(listener);
+    }
+
+    public String gettxtIdItem(){
+        return txtIdItem.getText();
+    }
+
+    public void limparcampoID(){
+        txtIdItem.setText("");
+    }
+
+
+
+    public void msg(String mensagem, String titulo) {
         JOptionPane.showMessageDialog(this, mensagem);
     }
+
+
 }

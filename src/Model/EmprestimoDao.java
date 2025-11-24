@@ -16,7 +16,7 @@ import java.time.LocalDate;
 
 
 public class EmprestimoDao {
-    private ArrayList<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
+    private static ArrayList<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
     private int proximoId = 1;
     private LocalDate dataAtual = LocalDate.now();
     private int idItem;
@@ -31,9 +31,9 @@ public class EmprestimoDao {
 
 
 
-    public Emprestimo buscarPorId(int idItem) {
+    public static Emprestimo buscarPorId(int idItem) {
         for (Emprestimo e : emprestimos) {
-            if (e.getIdItem() == idItem && e.getStatusDevolvido()){
+            if (e.getIdItem() == idItem /*&& e.getStatusDevolvido()*/ ){
                 return e;
             }
         }

@@ -6,46 +6,80 @@ import Model.Emprestimo;
 import Model.EmprestimoDao;
 import Model.Usuario;
 import View.PainelDevolucao;
+import Model.DevolucaoDao;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class DevolucaoController {
-    EmprestimoDao model = new EmprestimoDao();
-    PainelDevolucao view = new PainelDevolucao();
+    private DevolucaoDao dao;
+    private PainelDevolucao view;
+    private MultaController multacontrol;
+    private Emprestimo emprestimo;
+
+    public DevolucaoController(DevolucaoDao dao, PainelDevolucao view, MultaController multacontrol) {
+        this.dao = dao;
+        this.view = view;
+        this.multacontrol = multacontrol;
+        this.emprestimo = null;
+
+
+        this.view.addBtnConfirmarListener(new ActionListener() {
+            @Override
+            public void actionPerformed (ActionEvent e){
+                try {
+                    int id = Integer.parseInt(view.gettxtIdItem());
+                    realizarDevolucao(id);
+                    view.limparcampoID();
+                    //frame.setVisible(false);
+                } catch (NumberFormatException ex) {
+                    view.msg( "Digite um número válido.", "Numero inválido");
+                }}
+        });
+    }
+
 
     //variaveis da função
-    int id;
-    double valordamulta = 0;
-    int diasAtraso;
 
-    private LocalDate dataAtual = LocalDate.now();
-    Emprestimo emprestimo= model.buscarPorId(id);
+
     private EmprestimoController grupo4;
     private ReservaController grupo6;
-    private MultaController multacontrol;
 
 
-
-
-    public void finalizarEmprestimo(int IdItem){
-        //bloco if e else pra uma variavel no view se foi confirmado devolução ou não
-        emprestimo.setStatusDevolvido(true);
-        //else
-        emprestimo.setStatusDevolvido(false);
-    }
+    /* public void finalizarEmprestimo(int IdItem){
+         //bloco if e else pra uma variavel no view se foi confirmado devolução ou não
+         emprestimo.setStatusDevolvido(true);
+         //else
+         emprestimo.setStatusDevolvido(false);
+     }*/
     public void realizarDevolucao(int idItem) {
-        Emprestimo emprestimo= model.buscarPorId(id);
+        int id = 0;
+        double valordamulta = 0;
+        int diasAtraso = 0;
+
+
+        Emprestimo emprestimo = EmprestimoDao.buscarPorId(idItem);
+
         if (emprestimo == null) {
-            JOptionPane.showMessageDialog(null,"Emprestimo não encontrado");
-        } else{
+            JOptionPane.showMessageDialog(null, "Emprestimo não encontrado");
+        } else {
             //função muda status do emprestimo
             emprestimo.setStatusDevolvido(true);
+            diasAtraso = dao.CalcularAtraso(emprestimo);
+
             Usuario usuario = emprestimo.getUsuario();
-            valordamulta = multacontrol.gerarMulta(usuario, diasAtraso);
-            view.msg("Valor da Multa: " + valordamulta + "R$");
+
+            valordamulta = multacontrol.calcularMulta(usuario, diasAtraso);
+            view.msg("Multa: R$ " + valordamulta, "titulo");
+
+
         }
     }
+
+
+
 
 }
