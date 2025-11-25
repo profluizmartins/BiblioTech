@@ -3,6 +3,10 @@ package Model;
 /**
  * Classe abstrata que representa a entidade base Pessoa.
  * @author Andrey Raphael Gomes Ribeiro Ferreira
+ * @author Daniel Noleto de Oliveira
+ * @author Uriel Fernades de Santos
+ * @author Luiz Hnerique Lima de Oliveira
+ * @author Pedro Martins de Melo Ferreira
  * @version 1.0
  */
 public abstract class Pessoa {
@@ -23,7 +27,7 @@ public abstract class Pessoa {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
-        this.id = 0;
+        this.id = id;
     }
 
     //getters e setters

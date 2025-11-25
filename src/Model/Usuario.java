@@ -7,6 +7,10 @@ import java.time.Period;
  * Classe que representa um Usuário (Membro da Biblioteca).
  * Herda de Pessoa e adiciona atributos específicos (matricula, dataNascimento, status).
  * @author Andrey Raphael Gomes Ribeiro Ferreira
+ * @author Daniel Noleto de Oliveira
+ * @author Uriel Fernades de Santos
+ * @author Luiz Hnerique Lima de Oliveira
+ * @author Pedro Martins de Melo Ferreira
  * @version 1.0
  */
 public class Usuario extends Pessoa {
