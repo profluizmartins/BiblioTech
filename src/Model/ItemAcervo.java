@@ -21,6 +21,7 @@ public class ItemAcervo {
         this.statusDescartado = statusDescartado;
     }
 
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

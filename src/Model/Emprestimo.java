@@ -1,4 +1,5 @@
 package Model;
+import Model.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -7,19 +8,20 @@ import java.util.ArrayList;
  * (Versão ajustada com correções de sintaxe para o Grupo 5)
  */
 public class Emprestimo {
-    private int idItem;
+    private int acervoId;
     private Usuario usuario;
     private String itemEmprestado;
     private boolean statusDevolvido; // false = Ativo, true = Finalizado
     private boolean statusAtrasado;
     private LocalDate dataEmprestimo;
-    private LocalDate dataDevolucao; // Data PREVISTA para devolução
-    // Construtor
-    public Emprestimo(int idItem, Usuario usuario, String itemEmprestado,
-                      boolean statusDevolvido, boolean statusAtrasado,
-                      LocalDate dataEmprestimo, LocalDate dataDevolucao) {
+    private LocalDate dataDevolucao;
 
-        this.idItem = idItem;
+
+    // Data PREVISTA para devolução
+    // Construtor
+    public Emprestimo(ItemAcervo item, Usuario usuario, String itemEmprestado,
+                      boolean statusDevolvido, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
+        this.acervoId = item.getId();
         this.usuario = usuario;
         this.itemEmprestado = itemEmprestado;
         this.statusDevolvido = statusDevolvido;
@@ -47,7 +49,7 @@ public class Emprestimo {
     public Usuario getUsuario() { return usuario; }
     public void setUsuario(Usuario usuario) { this.usuario = usuario; }
 
-    public int getIdItem() { return idItem; }
-    public void setIdItem(int idItem) { this.idItem = idItem; }
+    public int getIdItem() { return acervoId; }
+    public void setIdItem(int idItem) { this.acervoId = idItem; }
 }
 
