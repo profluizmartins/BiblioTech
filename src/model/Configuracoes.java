@@ -3,6 +3,7 @@ package model;
 /**
  * Armazena e gerencia as configurações gerais do sistema.
  * Implementado no padrão Singleton.
+ * @author Grupo 9
  */
 public class Configuracoes {
 
