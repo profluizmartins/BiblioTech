@@ -3,10 +3,9 @@ package model;
 /**
  * Armazena e gerencia as configurações gerais do sistema.
  * Implementado no padrão Singleton.
-<<<<<<< HEAD
-=======
+
  * @author Grupo 9
->>>>>>> Grupo9_AdministracaoEConfiguracoes
+
  */
 public class Configuracoes {
 
@@ -43,8 +42,6 @@ public class Configuracoes {
 
     public int getLimiteEmprestimosPorUsuario() { return limiteEmprestimosPorUsuario; }
     public void setLimiteEmprestimosPorUsuario(int valor) { this.limiteEmprestimosPorUsuario = valor; }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> Grupo9_AdministracaoEConfiguracoes
+
