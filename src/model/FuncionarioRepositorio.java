@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * DAO responsável por armazenar, recuperar e remover funcionários.
- * Implementado pelo Grupo 9.
+ * @author Grupo 9.
  */
 public class FuncionarioRepositorio {
 
