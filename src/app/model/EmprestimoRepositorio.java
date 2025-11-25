@@ -1,11 +1,27 @@
 package app.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe responsável por armazenar e manipular os empréstimos.
- * Funciona como um "banco de dados" interno em memória.
+ * Repositório responsável por armazenar, gerenciar e aplicar regras
+ * de negócio relacionadas aos empréstimos realizados na biblioteca.
+ * 
+ * Esta classe contém:
+ * A lista de todos os empréstimos cadastrados
+ * Geração automática de IDs para novos empréstimos
+ * Regras de validação antes de permitir um empréstimo
+ * (como checar se o item já está emprestado ou se o usuário atingiu o limite)
+ * 
+ * Regras de negócio implementadas:
+ * 1. Um item não pode ser emprestado se já estiver com status ATIVO.
+ * 2. Um usuário só pode ter no máximo 3 empréstimos ativos simultaneamente.
+ * 3. Se a data prevista para devolução não for informada,
+ *    o sistema define automaticamente 7 dias após a data do empréstimo.
+ * 
+ * Esta classe é central no controle de empréstimos e deve ser utilizada
+ * pelas camadas superiores do sistema (ex.: interface gráfica ou serviços).
  * 
  * @author Grupo 4
  * @version 1.0
@@ -16,25 +32,79 @@ public class EmprestimoRepositorio {
     private int proximoId = 1;
 
     /**
-     * Cria e adiciona um novo empréstimo ao repositório.
+     * Cria e adiciona um novo empréstimo ao repositório após aplicar
+     * todas as regras de negócio necessárias.
+     * 
+     * Validações realizadas:
+     * - O item não pode estar emprestado (status ATIVO).
+     * - O usuário não pode possuir mais de 3 empréstimos ativos.
+     * - Caso a data prevista para devolução seja nula, define-a automaticamente.
+     * 
+     * @param usuario               Usuário que está realizando o empréstimo.
+     * @param item                  Item do acervo que será emprestado.
+     * @param dataEmprestimo        Data em que o empréstimo está sendo registrado.
+     * @param dataPrevistaDevolucao Data limite para devolução (opcional).
+     * @return O empréstimo criado e adicionado ao repositório.
+     * 
+     * @throws IllegalArgumentException Caso alguma regra de negócio seja violada.
      */
-    public Emprestimo criarEmprestimo(Usuario usuario, ItemAcervo item, java.time.LocalDate dataEmprestimo, java.time.LocalDate dataPrevistaDevolucao) {
+    public Emprestimo criarEmprestimo(
+            Usuario usuario,
+            ItemAcervo item,
+            LocalDate dataEmprestimo,
+            LocalDate dataPrevistaDevolucao) {
 
-        Emprestimo emp = new Emprestimo(proximoId++, usuario, item, dataEmprestimo, dataPrevistaDevolucao, StatusEmprestimo.ATIVO);
+        // Regra 1: item não pode estar emprestado
+        for (Emprestimo e : emprestimos) {
+            if (e.getItem().equals(item) && e.getStatus() == StatusEmprestimo.ATIVO) {
+                throw new IllegalArgumentException(
+                        "O item '" + item.getTitulo() + "' já está emprestado e não pode ser emprestado novamente.");
+            }
+        }
+
+        // Regra 2: limitar empréstimos ativos por usuário (máximo de 3)
+        long emprestimosAtivosUsuario = emprestimos.stream()
+                .filter(e -> e.getUsuario().equals(usuario) && e.getStatus() == StatusEmprestimo.ATIVO)
+                .count();
+
+        if (emprestimosAtivosUsuario >= 3) {
+            throw new IllegalArgumentException(
+                    "O usuário '" + usuario.getNome() + "' já possui o número máximo de empréstimos ativos.");
+        }
+
+        // Regra 3: definir automaticamente data prevista se não for informada
+        if (dataPrevistaDevolucao == null) {
+            dataPrevistaDevolucao = dataEmprestimo.plusDays(7);
+        }
+
+        // Criação e cadastro do empréstimo
+        Emprestimo emp = new Emprestimo(
+                proximoId++,
+                usuario,
+                item,
+                dataEmprestimo,
+                dataPrevistaDevolucao,
+                StatusEmprestimo.ATIVO
+        );
 
         emprestimos.add(emp);
         return emp;
     }
 
     /**
-     * Retorna todos os empréstimos cadastrados.
+     * Retorna a lista completa de empréstimos cadastrados no sistema.
+     * 
+     * @return Lista de empréstimos.
      */
     public List<Emprestimo> listar() {
         return emprestimos;
     }
 
     /**
-     * Busca um empréstimo pelo ID.
+     * Busca um empréstimo pelo seu identificador único.
+     * 
+     * @param id ID do empréstimo desejado.
+     * @return O empréstimo correspondente ao ID ou null caso não exista.
      */
     public Emprestimo buscarPorId(int id) {
         for (Emprestimo e : emprestimos) {
