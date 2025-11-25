@@ -37,8 +37,8 @@ public class Usuario extends Pessoa {
      * @param endereco O endereço do usuário.
      * @param dataNascimento A data de nascimento do usuário.
      */
-    public Usuario(int id, String nome, String cpf, String endereco, LocalDate dataNascimento) {
-        super(nome, cpf, endereco, id);
+    public Usuario(String nome, String cpf, String endereco, LocalDate dataNascimento) {
+        super(nome, cpf, endereco);
         this.dataNascimento = dataNascimento; 
         this.matricula = "";
         this.status = TipoStatus.ATIVO;

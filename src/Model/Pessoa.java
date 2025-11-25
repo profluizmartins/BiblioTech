@@ -23,11 +23,11 @@ public abstract class Pessoa {
      * @param endereco O endereço residencial da pessoa.
      * @param id O identificador único numérico da pessoa.
      */
-    public Pessoa(String nome, String cpf, String endereco, int id) {
+    public Pessoa(String nome, String cpf, String endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
-        this.id = id;
+        this.id = 0;
     }
 
     //getters e setters
