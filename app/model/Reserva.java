@@ -26,7 +26,7 @@ public class Reserva {
     private static final int DISPONIVEL = 2; // item pronto para empréstimo
     private static final int CONCLUIDA = 3; // ja foi feito o empréstimo
     private static final int CANCELADA = 4; // reserva cancelada pelo usuário ou pela administração
-    private static final int EXPIRADA = 5; // usuário não fez o empréstimo dentro do prazo
+    private static final int EXPIRADA = 5; // usuário não fez a devolução dentro do prazo
 
     /**
      * Método construtor de Reserva
@@ -86,3 +86,4 @@ public class Reserva {
         this.status = status;
     }
 }
+
