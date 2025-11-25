@@ -1,5 +1,18 @@
+package app.modell;
+
 import java.time.LocalDate;
 
+/**
+ * Classe MODELL de reservas
+ * @author Ana Elisa
+ * @author Davi Porto
+ * @author Gustavo Ribeiro
+ * @author Maikow
+ * @author Marllus Coutinho
+ *
+ * @version 1.0
+ * @since 25-11-2025
+ */
 public class Reserva {
     private int id;
     private Usuario usuario;
