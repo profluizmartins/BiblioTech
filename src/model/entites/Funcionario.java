@@ -1,4 +1,4 @@
-package model;
+package model.entites;
 
 /**
  * Representa um funcionário cadastrado no sistema.

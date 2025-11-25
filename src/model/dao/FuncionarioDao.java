@@ -1,12 +1,14 @@
-package model;
+package model.dao;
 
 import java.util.ArrayList;
+
+import model.entites.Funcionario;
 
 /**
  * DAO responsável por armazenar, recuperar e remover funcionários.
  * @author Grupo 9.
  */
-public class FuncionarioRepositorio {
+public class FuncionarioDao {
 
     private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
     private static int proximoId = 1;
