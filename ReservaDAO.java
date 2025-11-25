@@ -94,8 +94,3 @@ public class ReservaDAO {
         bancoDeReservas.removeIf(r -> r.getId() == id); // metodo que remove apartir de uma condição, se o id da reserva for igual ao do parametro, então ele a remove
     } // lançar exceção caso não seja econtrado nenhuma reserva
 }
-
-    public void deletar(int id){
-        bancoDeReservas.removeIf(r -> r.getId() == id); // metodo que remove apartir de uma condição, se o id da reserva for igual ao do parametro, então ele a remove
-    } // lançar exceção caso não seja econtrado nenhuma reserva
-}
