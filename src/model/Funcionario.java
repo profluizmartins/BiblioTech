@@ -3,8 +3,7 @@ package model;
 /**
  * Representa um funcionário cadastrado no sistema.
  * Herda os atributos e comportamentos básicos da classe Pessoa (Grupo 3).
- * @author Grupo 3
- * @version 1.0
+ * @author Grupo 9
  */
 public class Funcionario extends Pessoa {
 
