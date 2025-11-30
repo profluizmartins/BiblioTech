@@ -2,6 +2,7 @@ package model;
 
 /** 
  * Classe responsável por manter a sessão de login.
+ * 
  * A classe implementa o padrão Singleton.
 */
 

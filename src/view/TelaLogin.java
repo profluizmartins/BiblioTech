@@ -3,8 +3,13 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
+import controller.LoginController;
+import exception.*;
+import model.Funcionario;
+import model.SessaoUsuario;
+
 /**
- * Tela de login do sistema BiblioTech
+ * Tela de login do sistema BiblioTech.
  */
 
 public class TelaLogin extends JFrame {
@@ -17,7 +22,7 @@ public class TelaLogin extends JFrame {
     /**
      * Construtor da classe TelaLogin.
      * 
-     * Ele inicializa todos os componentes da interface gráfico. 
+     * Ele inicializa todos os componentes da interface gráfica. 
      * 
      * A interface gráfica foi definida de modo que o espaçamento entre os seus componentes permaneça o mesmo, independente do tamanho da janela.
      */
@@ -92,13 +97,82 @@ public class TelaLogin extends JFrame {
         // Este comentário tem como única função verificar se um dos meus colegas leu o código.
 
         // Criação do painel de botões.
-
         JPanel painelBotoes = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         btnOk = new JButton("OK");
         btnCancelar = new JButton("Cancelar");
+
+        // Ação do botão btnCancelar.
+        btnCancelar.addActionListener(e -> System.exit(0));
+
+        // Ações do botão btnOk.
+        btnOk.addActionListener(e -> {
+            String login = campoLogin.getText();
+            String senha = new String(campoSenha.getPassword());
+        
+            try {
+                // Verifica se os campos estão vazios.
+                validarCampos(login, senha);
+        
+                LoginController controller = new LoginController();
+                // Verifica se as credenciais correspondem à alguma conta.
+                controller.autenticar(login, senha);
+        
+                // Abre a TelaPrincipal
+                Funcionario f = SessaoUsuario.getInstance().getFuncionario();
+                TelaPrincipal tela = new TelaPrincipal();
+                tela.atualizarStatus(f.getNome(), f.getCargo());
+                tela.setVisible(true);
+        
+                dispose();
+        
+            } catch (CampoObrigatorioException ex) {
+                JOptionPane.showMessageDialog(
+                    this,
+                    ex.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE
+                );
+        
+            } catch (AutenticacaoFalhouException ex) {
+                JOptionPane.showMessageDialog(
+                    this,
+                    ex.getMessage(),
+                    "Erro de autenticação",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            }
+        });
+        
+
         painelBotoes.add(btnOk);
         painelBotoes.add(btnCancelar);
         
         add(painelBotoes, gbc);
+    }
+
+    /**
+     * Método que valida os campos de login e de senha.
+     * 
+     * @param login
+     * @param senha
+     * @throws CampoObrigatorioException
+    */
+
+    private void validarCampos(String login, String senha) throws CampoObrigatorioException {
+
+        boolean loginVazio = (login == null || login.trim().isEmpty());
+        boolean senhaVazia = (senha == null || senha.trim().isEmpty());
+
+        if (loginVazio && senhaVazia) {
+            throw new CampoObrigatorioException("Os campos 'Login' e 'Senha' são obrigatórios.");
+        }
+
+        if (loginVazio) {
+            throw new CampoObrigatorioException("O campo 'Login' é obrigatório.");
+        }
+
+        if (senhaVazia) {
+            throw new CampoObrigatorioException("O campo 'Senha' é obrigatório.");
+        }
     }
 }
