@@ -21,7 +21,7 @@ import java.time.format.DateTimeParseException;
  * @author Andrey Raphael Gomes Ribeiro Ferreira
  * @author Daniel Noleto de Oliveira
  * @author Uriel Fernades de Santos
- * @author Luiz Hnerique Lima de Oliveira
+ * @author Luiz Henrique Lima de Oliveira
  * @author Pedro Martins de Melo Ferreira
  * @version 1.0
  */
