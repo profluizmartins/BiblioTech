@@ -13,22 +13,51 @@ import Exceptions.OperacaoNaoPermitidaException;
 import Model.Usuario;
 import Model.UsuarioRepositorio;
 
+/**
+ * Classe responsável por gerenciar as operações relacionadas aos usuários.
+ * Atua como intermediária entre as views e o repositório, aplicando regras
+ * de validação e regras de negócio definidas no sistema.
+ *
+ * Operações implementadas:
+ * - Criar usuário
+ * - Atualizar usuário existente
+ * - Excluir usuário
+ * - Listar usuários
+ * - Buscar usuário por CPF
+ *
+ * Todas as falhas são tratadas com exceções personalizadas e mensagens
+ * exibidas por JOptionPane.
+ * 
+ * @author Andrey Raphael Gomes Ribeiro Ferreira
+ * @author Daniel Noleto de Oliveira
+ * @author Uriel Fernades de Santos
+ * @author Luiz Hnerique Lima de Oliveira
+ * @author Pedro Martins de Melo Ferreira
+ * @version 1.0
+ */
 public class UsuarioController {
 
     private UsuarioRepositorio repositorio;
 
+    /**
+     * Construtor padrão que instancia o repositório de usuários.
+     */
     public UsuarioController() {
         this.repositorio = new UsuarioRepositorio();
     }
 
-    // MÉTODO 1 — CRIAR USUÁRIO
-
-    public void criarUsuario(String nome, String cpf, String endereco, LocalDate dataNascimento) 
-    {
+    /**
+     * Cria um novo usuário após validar todos os campos obrigatórios.
+     *
+     * @param nome Nome do usuário.
+     * @param cpf CPF contendo 11 dígitos numéricos.
+     * @param endereco Endereço completo.
+     * @param dataNascimento Data de nascimento do usuário.
+     */
+    public void criarUsuario(String nome, String cpf, String endereco, LocalDate dataNascimento) {
         try {
             validarCampos(nome, cpf, endereco, dataNascimento);
 
-            // Verificar se o CPF já existe
             Usuario existente = repositorio.buscarPorCpf(cpf);
             if (existente != null) {
                 throw new UsuarioJaCadastradoException(cpf);
@@ -47,10 +76,15 @@ public class UsuarioController {
         }
     }
 
-    // MÉTODO 2 — ATUALIZAR USUÁRIO
-
-    public void atualizarUsuario(String nome, String cpf, String endereco, LocalDate dataNascimento) 
-    {
+    /**
+     * Atualiza os dados de um usuário identificado pelo CPF.
+     *
+     * @param nome Novo nome.
+     * @param cpf CPF do usuário (não pode ser alterado).
+     * @param endereco Novo endereço.
+     * @param dataNascimento Nova data de nascimento.
+     */
+    public void atualizarUsuario(String nome, String cpf, String endereco, LocalDate dataNascimento) {
         try {
             validarCampos(nome, cpf, endereco, dataNascimento);
 
@@ -77,8 +111,11 @@ public class UsuarioController {
         }
     }
 
-    // MÉTODO 3 — EXCLUIR USUÁRIO
-
+    /**
+     * Exclui um usuário do sistema após validação e confirmação.
+     *
+     * @param cpf CPF do usuário a ser excluído.
+     */
     public void excluirUsuario(String cpf) {
         try {
             if (cpf == null || cpf.isBlank()) {
@@ -91,7 +128,7 @@ public class UsuarioController {
                 throw new OperacaoNaoPermitidaException("Exclusão", "Usuário não encontrado");
             }
 
-            if (!"ATIVO".equals(existente.getStatus())) {
+            if (!"ATIVO".equals(existente.getStatus().name())) {
                 throw new OperacaoNaoPermitidaException("Exclusão",
                         "Usuário está com pendências no sistema");
             }
@@ -115,14 +152,21 @@ public class UsuarioController {
         }
     }
 
-    // MÉTODO 4 — LISTAR TODOS
-
+    /**
+     * Retorna uma lista contendo todos os usuários cadastrados.
+     *
+     * @return Lista de usuários.
+     */
     public java.util.List<Usuario> listarUsuarios() {
         return repositorio.buscarTodos();
     }
 
-    // MÉTODO 5 — BUSCAR POR CPF
-
+    /**
+     * Busca um usuário específico pelo CPF.
+     *
+     * @param cpf CPF a ser consultado.
+     * @return Usuário encontrado.
+     */
     public Usuario buscarUsuarioPorCpf(String cpf) {
         Usuario u = repositorio.buscarPorCpf(cpf);
 
@@ -134,8 +178,14 @@ public class UsuarioController {
         return u;
     }
 
-    // VALIDAÇÃO DE CAMPOS
-
+    /**
+     * Aplica as validações de campo definidas nas regras do trabalho.
+     *
+     * @param nome Nome informado.
+     * @param cpf CPF informado.
+     * @param endereco Endereço informado.
+     * @param dataNascimento Data de nascimento.
+     */
     private void validarCampos(String nome, String cpf, String endereco, LocalDate dataNascimento) {
 
         if (nome == null || nome.trim().length() < 3) {
