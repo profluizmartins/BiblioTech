@@ -1,7 +1,8 @@
 package View;
 
 import Controller.DevolucaoController;
-import Model.Emprestimo;
+import Model.MockEmprestimo;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -48,7 +49,7 @@ public class PainelDevolucao extends JPanel {
      * @return Retorna os dados do item consultado caso encontrado,
      * se não encontrado retorna uma caixa de erro informando que o item não foi encontrado
      */
-    public int mostrarEmprestimo(Emprestimo emprestimos) {
+    public int mostrarEmprestimo(MockEmprestimo emprestimos) {
         if (emprestimos != null) {
             String [] confirmacoes={"Confirmar Devolucao","Cancelar"};
             int resposta=JOptionPane.showOptionDialog(null,
@@ -103,5 +104,4 @@ public class PainelDevolucao extends JPanel {
     public void msg(String mensagem, String titulo) {
         JOptionPane.showMessageDialog(this, mensagem);
     }
-
 }

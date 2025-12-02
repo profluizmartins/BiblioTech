@@ -60,7 +60,7 @@ loadScripts(document, 'script');</script>
 <li><a href="#method-summary" tabindex="0">Method Summary</a></li>
 <li><a href="#field-detail" tabindex="0">Field Details</a>
 <ol class="toc-list">
-<li><a href="#emprestimos" tabindex="0">emprestimos</a></li>
+<li><a href="#mockEmprestimos" tabindex="0">mockEmprestimos</a></li>
 <li><a href="#dataAtual" tabindex="0">dataAtual</a></li>
 <li><a href="#idItem" tabindex="0">idItem</a></li>
 </ol>
@@ -87,7 +87,7 @@ loadScripts(document, 'script');</script>
 <h1 title="Class EmprestimoDao" class="title">Class EmprestimoDao</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">Model.EmprestimoDao</div>
+<div class="inheritance">Model.MockEmprestimoDao</div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
@@ -111,7 +111,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color"><code><a href="#dataAtual" class="member-name-link">dataAtual</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code>private static <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a><wbr>&lt;<a href="Emprestimo.html" title="class in Model">Emprestimo</a>&gt;</code></div>
-<div class="col-second odd-row-color"><code><a href="#emprestimos" class="member-name-link">emprestimos</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#mockEmprestimos" class="member-name-link">mockEmprestimos</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code>private int</code></div>
 <div class="col-second even-row-color"><code><a href="#idItem" class="member-name-link">idItem</a></code></div>
@@ -145,7 +145,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#adicionarEmprestimo(Model.ItemAcervo,Model.Usuario,java.time.LocalDate,java.time.LocalDate)" class="member-name-link">adicionarEmprestimo</a><wbr>(<a href="ItemAcervo.html" title="class in Model">ItemAcervo</a>&nbsp;item,
- <a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;usuario,
+ <a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;mockUsuario,
  <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;dataEmprestimo,
  <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;dataDevolucao)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
@@ -159,7 +159,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#listarProduto()" class="member-name-link">listarProduto</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setEmprestimos(java.util.ArrayList)" class="member-name-link">setEmprestimos</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="Emprestimo.html" title="class in Model">Emprestimo</a>&gt;&nbsp;emprestimos)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setEmprestimos(java.util.ArrayList)" class="member-name-link">setEmprestimos</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="Emprestimo.html" title="class in Model">Emprestimo</a>&gt;&nbsp;mockEmprestimos)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
@@ -179,10 +179,10 @@ loadScripts(document, 'script');</script>
 <h2>Field Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="emprestimos">
-<h3>emprestimos</h3>
+<section class="detail" id="mockEmprestimos">
+<h3>mockEmprestimos</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="Emprestimo.html" title="class in Model">Emprestimo</a>&gt;</span>&nbsp;<span class="element-name">emprestimos</span></div>
+<div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="Emprestimo.html" title="class in Model">Emprestimo</a>&gt;</span>&nbsp;<span class="element-name">mockEmprestimos</span></div>
 </div>
 </section>
 </li>
@@ -231,7 +231,7 @@ loadScripts(document, 'script');</script>
 <h3>adicionarEmprestimo</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">adicionarEmprestimo</span><wbr><span class="parameters">(<a href="ItemAcervo.html" title="class in Model">ItemAcervo</a>&nbsp;item,
- <a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;usuario,
+ <a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;mockUsuario,
  <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;dataEmprestimo,
  <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;dataDevolucao)</span></div>
 </div>
@@ -265,7 +265,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setEmprestimos(java.util.ArrayList)">
 <h3>setEmprestimos</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setEmprestimos</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="Emprestimo.html" title="class in Model">Emprestimo</a>&gt;&nbsp;emprestimos)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setEmprestimos</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="Emprestimo.html" title="class in Model">Emprestimo</a>&gt;&nbsp;mockEmprestimos)</span></div>
 </div>
 </section>
 </li>

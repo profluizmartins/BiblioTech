@@ -2,15 +2,15 @@ package Model;
 
 import java.time.LocalDate;
 
-public class Usuario {
+public class MockUsuario {
     private String nome;
     private LocalDate dataNascimento;
     private boolean statusAtivo;
     private boolean statusSuspensoPorMulta;
 
 
-    public Usuario(String nome, LocalDate dataNascimento,
-                   boolean statusAtivo, boolean statusSuspensoPorMulta) {
+    public MockUsuario(String nome, LocalDate dataNascimento,
+                       boolean statusAtivo, boolean statusSuspensoPorMulta) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.statusAtivo = statusAtivo;

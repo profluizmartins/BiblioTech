@@ -1,15 +1,13 @@
 package Model;
-import Model.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 /**
  * Classe que contém dados do empréstimo do item
  * (Versão ajustada com correções de sintaxe para o Grupo 5)
  */
-public class Emprestimo {
+public class MockEmprestimo {
     private int acervoId;
-    private Usuario usuario;
+    private MockUsuario mockUsuario;
     private String itemEmprestado;
     private boolean statusDevolvido; // false = Ativo, true = Finalizado
     private boolean statusAtrasado;
@@ -19,10 +17,10 @@ public class Emprestimo {
 
     // Data PREVISTA para devolução
     // Construtor
-    public Emprestimo(ItemAcervo item, Usuario usuario, String itemEmprestado,
-                      boolean statusDevolvido, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
+    public MockEmprestimo(MockItemAcervo item, MockUsuario mockUsuario, String itemEmprestado,
+                          boolean statusDevolvido, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
         this.acervoId = item.getId();
-        this.usuario = usuario;
+        this.mockUsuario = mockUsuario;
         this.itemEmprestado = itemEmprestado;
         this.statusDevolvido = statusDevolvido;
         this.statusAtrasado = statusAtrasado;
@@ -46,8 +44,8 @@ public class Emprestimo {
     public String getItemEmprestado() { return itemEmprestado; }
     public void setItemEmprestado(String itemEmprestado) { this.itemEmprestado = itemEmprestado; }
 
-    public Usuario getUsuario() { return usuario; }
-    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+    public MockUsuario getUsuario() { return mockUsuario; }
+    public void setUsuario(MockUsuario mockUsuario) { this.mockUsuario = mockUsuario; }
 
     public int getIdItem() { return acervoId; }
     public void setIdItem(int idItem) { this.acervoId = idItem; }

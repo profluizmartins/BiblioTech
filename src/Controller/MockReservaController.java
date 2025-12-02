@@ -1,6 +1,6 @@
 package Controller;
 
-public class ReservaController {
+public class MockReservaController {
     public boolean verificarReserva(int idItem) {
         return idItem == 50;
     }

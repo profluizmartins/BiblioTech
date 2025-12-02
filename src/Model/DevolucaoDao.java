@@ -1,6 +1,5 @@
 package Model;
 
-import javax.swing.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -20,21 +19,21 @@ public class DevolucaoDao {
     /**
      * Método que calcula quantos dias há de atraso
      *
-     * @param emprestimo Emprestimo do item
+     * @param mockEmprestimo Emprestimo do item
      *
      * @return Retorna quantos dias há de atraso, ou retorna 0 se não há dias de atraso
      */
-    public int CalcularAtraso(Emprestimo emprestimo) {
+    public int CalcularAtraso(MockEmprestimo mockEmprestimo) {
        LocalDate dataAtual = LocalDate.now();
-       LocalDate dataDevolucao = emprestimo.getDataDevolucao();
-       boolean statusAtrasado = emprestimo.getStatusDevolvido();
+       LocalDate dataDevolucao = mockEmprestimo.getDataDevolucao();
+       boolean statusAtrasado = mockEmprestimo.getStatusDevolvido();
 
         if (dataDevolucao.isBefore(dataAtual)) {
-            emprestimo.setStatusAtrasado(true);
+            mockEmprestimo.setStatusAtrasado(true);
             long diferenca = ChronoUnit.DAYS.between(dataDevolucao, dataAtual);
             return(int) diferenca;
         } else {
-            emprestimo.setStatusAtrasado(false);
+            mockEmprestimo.setStatusAtrasado(false);
         }
         return 0;
     }

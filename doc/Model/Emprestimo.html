@@ -61,7 +61,7 @@ loadScripts(document, 'script');</script>
 <li><a href="#field-detail" tabindex="0">Field Details</a>
 <ol class="toc-list">
 <li><a href="#acervoId" tabindex="0">acervoId</a></li>
-<li><a href="#usuario" tabindex="0">usuario</a></li>
+<li><a href="#mockUsuario" tabindex="0">mockUsuario</a></li>
 <li><a href="#itemEmprestado" tabindex="0">itemEmprestado</a></li>
 <li><a href="#statusDevolvido" tabindex="0">statusDevolvido</a></li>
 <li><a href="#statusAtrasado" tabindex="0">statusAtrasado</a></li>
@@ -100,7 +100,7 @@ loadScripts(document, 'script');</script>
 <h1 title="Class Emprestimo" class="title">Class Emprestimo</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">Model.Emprestimo</div>
+<div class="inheritance">Model.MockEmprestimo</div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
@@ -141,7 +141,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color"><code><a href="#statusDevolvido" class="member-name-link">statusDevolvido</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code>private <a href="Usuario.html" title="class in Model">Usuario</a></code></div>
-<div class="col-second even-row-color"><code><a href="#usuario" class="member-name-link">usuario</a></code></div>
+<div class="col-second even-row-color"><code><a href="#mockUsuario" class="member-name-link">mockUsuario</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -155,7 +155,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(Model.ItemAcervo,Model.Usuario,java.lang.String,boolean,java.time.LocalDate,java.time.LocalDate)" class="member-name-link">Emprestimo</a><wbr>(<a href="ItemAcervo.html" title="class in Model">ItemAcervo</a>&nbsp;item,
- <a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;usuario,
+ <a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;mockUsuario,
  <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemEmprestado,
  boolean&nbsp;statusDevolvido,
  <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;dataEmprestimo,
@@ -215,7 +215,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setStatusDevolvido(boolean)" class="member-name-link">setStatusDevolvido</a><wbr>(boolean&nbsp;statusDevolvido)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setUsuario(Model.Usuario)" class="member-name-link">setUsuario</a><wbr>(<a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;usuario)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setUsuario(Model.Usuario)" class="member-name-link">setUsuario</a><wbr>(<a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;mockUsuario)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
@@ -243,10 +243,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="usuario">
-<h3>usuario</h3>
+<section class="detail" id="mockUsuario">
+<h3>mockUsuario</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="Usuario.html" title="class in Model">Usuario</a></span>&nbsp;<span class="element-name">usuario</span></div>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="Usuario.html" title="class in Model">Usuario</a></span>&nbsp;<span class="element-name">mockUsuario</span></div>
 </div>
 </section>
 </li>
@@ -303,7 +303,7 @@ loadScripts(document, 'script');</script>
 <h3>Emprestimo</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Emprestimo</span><wbr><span class="parameters">(<a href="ItemAcervo.html" title="class in Model">ItemAcervo</a>&nbsp;item,
- <a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;usuario,
+ <a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;mockUsuario,
  <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemEmprestado,
  boolean&nbsp;statusDevolvido,
  <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;dataEmprestimo,
@@ -411,7 +411,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setUsuario(Model.Usuario)">
 <h3>setUsuario</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setUsuario</span><wbr><span class="parameters">(<a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;usuario)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setUsuario</span><wbr><span class="parameters">(<a href="Usuario.html" title="class in Model">Usuario</a>&nbsp;mockUsuario)</span></div>
 </div>
 </section>
 </li>

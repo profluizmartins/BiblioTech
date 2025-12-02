@@ -1,6 +1,6 @@
 package Model;
 
-public class ItemAcervo {
+public class MockItemAcervo {
     private int id;
     private String titulo;
     private int anoPublicacao;
@@ -9,9 +9,9 @@ public class ItemAcervo {
     private boolean statusReservado;
     private boolean statusDescartado;
 
-    public ItemAcervo(int id, String titulo, int anoPublicacao,
-                      boolean statusDisponivel, boolean statusEmprestado,
-                      boolean statusReservado, boolean statusDescartado) {
+    public MockItemAcervo(int id, String titulo, int anoPublicacao,
+                          boolean statusDisponivel, boolean statusEmprestado,
+                          boolean statusReservado, boolean statusDescartado) {
         this.id = id;
         this.titulo = titulo;
         this.anoPublicacao = anoPublicacao;

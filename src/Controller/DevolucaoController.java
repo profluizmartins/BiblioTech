@@ -1,14 +1,11 @@
 package Controller;
 
-import Exceptions.EmprestimoNaoEncontradoException;
 import Exceptions.ItemJaDevolvidoException;
 import Model.*;
 import View.PainelDevolucao;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 /**
  * Classe Controller de Devolução
@@ -22,11 +19,11 @@ import java.time.temporal.ChronoUnit;
  * @version 1.0
  */
 public class DevolucaoController {
-    private EmprestimoDao Edao;
+    private MockEmprestimoDao Edao;
     private DevolucaoDao dao;
     private PainelDevolucao view;
-    private MultaController multacontrol;
-    private Emprestimo emprestimo;
+    private MockMultaController multacontrol;
+    private MockEmprestimo mockEmprestimo;
 
     /**
      * Método construtor da classe DevolucaoController
@@ -36,11 +33,11 @@ public class DevolucaoController {
      * @param multacontrol Controller da multa
      *
      */
-    public DevolucaoController(DevolucaoDao dao, PainelDevolucao view, MultaController multacontrol, ItemAcervo acervo) {
+    public DevolucaoController(DevolucaoDao dao, PainelDevolucao view, MockMultaController multacontrol, MockItemAcervo acervo) {
         this.dao = dao;
         this.view = view;
         this.multacontrol = multacontrol;
-        this.emprestimo = null;
+        this.mockEmprestimo = null;
 
 
         this.view.addBtnConfirmarListener(new ActionListener() {
@@ -76,26 +73,27 @@ public class DevolucaoController {
      *
      * @return valor da multa, se houver uma multa
      */
-    public double realizarDevolucao(int idItem, ItemAcervo acervo) throws ItemJaDevolvidoException{
+    public double realizarDevolucao(int idItem, MockItemAcervo acervo) throws ItemJaDevolvidoException{
         int id = 0;
         double valordamulta = 0;
         int diasAtraso = 0;
 
-        Emprestimo emprestimo = EmprestimoDao.buscarPorId(idItem);
+        MockEmprestimo mockEmprestimo = MockEmprestimoDao.buscarPorId(idItem);
         try {
-            if (emprestimo == null) {
+            if (mockEmprestimo == null) {
                 JOptionPane.showMessageDialog(null, "Emprestimo não encontrado");
                 return 0;
-            } else if (emprestimo.getStatusDevolvido()) {
+            } else if (mockEmprestimo.getStatusDevolvido()) {
                 throw new ItemJaDevolvidoException("O Item já foi devolvido.");
             }
         }catch(ItemJaDevolvidoException ex){
             view.msg("O Item já foi devolvido.","Mensagem de erro");
         }
-        diasAtraso = dao.CalcularAtraso(emprestimo);Usuario usuario = emprestimo.getUsuario();
-        valordamulta = multacontrol.calcularMulta(usuario, diasAtraso);
+        diasAtraso = dao.CalcularAtraso(mockEmprestimo);
+        MockUsuario mockUsuario = mockEmprestimo.getUsuario();
+        valordamulta = multacontrol.calcularMulta(mockUsuario, diasAtraso);
 
-        emprestimo.setStatusDevolvido(true);
+        mockEmprestimo.setStatusDevolvido(true);
         acervo.setStatusEmprestado(false);
         return valordamulta;
     }
