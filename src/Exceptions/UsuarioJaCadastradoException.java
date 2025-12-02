@@ -6,7 +6,7 @@ package Exceptions;
  */
 public class UsuarioJaCadastradoException extends RuntimeException {
     public UsuarioJaCadastradoException(String cpf) {
-        /**
+    	/**
          * Construtor da exceção.
         * @param cpf O CPF duplicado que causou o erro.
         */

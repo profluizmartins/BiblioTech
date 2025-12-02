@@ -9,6 +9,7 @@ package Model;
  * @author Pedro Martins de Melo Ferreira
  * @version 1.0
  */
+
 public abstract class Pessoa {
     
     private String nome;

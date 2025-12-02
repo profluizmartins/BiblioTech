@@ -6,12 +6,11 @@ package Exceptions;
  * Esta exceção usa uma mensagem de erro fixa.
  */
 public class ValidacaoException extends RuntimeException {
-    
-    /**
+	/**
      * Construtor padrão da exceção ValidacaoException.
      * Não recebe parâmetros e utiliza uma mensagem de erro fixa que referencia a "Data de Nascimento inválida".
      */
-    public ValidacaoException() {
-        super("Data de Nascimento inválida.");
+    public ValidacaoException(String mensagem) {
+        super("Data de Nascimento inválida");
     }
 }
