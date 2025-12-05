@@ -117,11 +117,11 @@ public class TelaLogin extends JFrame {
                 // Verifica se as credenciais correspondem à alguma conta.
                 controller.autenticar(login, senha);
         
-                // Abre a TelaPrincipal
-                Funcionario f = SessaoUsuario.getInstance().getFuncionario();
-                TelaPrincipal tela = new TelaPrincipal();
-                tela.atualizarStatus(f.getNome(), f.getCargo());
-                tela.setVisible(true);
+                /* Abria a TelaPrincipal
+                Funcionario f = SessaoUsuario.getInstance().getFuncionarioLogado();
+                TelaPrincipalView tela = new TelaPrincipalView();
+                //tela.atualizarStatus(f.getNome(), f.getCargo());
+                tela.setVisible(true);*/
         
                 dispose();
         
@@ -175,4 +175,5 @@ public class TelaLogin extends JFrame {
             throw new CampoObrigatorioException("O campo 'Senha' é obrigatório.");
         }
     }
+    
 }
