@@ -9,7 +9,7 @@ import java.util.List;
 
 // Imports necessários
 import Controller.AcervoController;
-import Model.ItemAcervo;
+import model.ItemAcervo;
 
 public class PainelGestaoAcervo extends JPanel {
 
@@ -128,5 +128,5 @@ public class PainelGestaoAcervo extends JPanel {
             modeloTabela.addRow(linha);
         }
     }
-    
+
 }
