@@ -4,7 +4,7 @@ import java.util.List;
 import DAO.AcervoRepositorio; // Importa o DAO
 import Exception.ItemNaoEncontradoException;
 import Exception.OperacaoNaoPermitidaException;
-import Model.ItemAcervo; // Importa o Model
+import model_temp.ItemAcervo;
 
 /**
  * Controlador responsável por gerenciar as ações do Painel de Acervo (Listagem e Exclusão).

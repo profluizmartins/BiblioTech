@@ -1,4 +1,4 @@
-package model.entites;
+package model_temp.entites;
 
 /**
  * Representa um funcionário cadastrado no sistema.

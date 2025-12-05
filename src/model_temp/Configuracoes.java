@@ -1,4 +1,4 @@
-package model;
+package model_temp;
 
 /**
  * Armazena e gerencia as configurações gerais do sistema.

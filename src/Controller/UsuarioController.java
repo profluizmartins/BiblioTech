@@ -8,11 +8,9 @@ import Exceptions.CampoObrigatorioException;
 import Exceptions.MenorDeIdadeException;
 import Exceptions.UsuarioJaCadastradoException;
 import Exceptions.ValidacaoException;
+import model.Usuario;
+import model.UsuarioRepositorio;
 import Exceptions.OperacaoNaoPermitidaException;
-
-import Model.Usuario;
-import Model.UsuarioRepositorio;
-
 /**
  * Classe responsável por gerenciar as operações relacionadas aos usuários.
  * Atua como intermediária entre as views e o repositório, aplicando regras

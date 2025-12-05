@@ -1,7 +1,7 @@
 package View;
 
 import Controller.UsuarioController;
-import Model.Usuario;
+import model.Usuario;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

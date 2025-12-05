@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Exception.ItemJaCadastradoException;
-import Model.ItemAcervo;
-import Model.Livro;
+import model_temp.ItemAcervo;
+import model_temp.Livro;
 
 /**
  * Repositório em memória para guardar Livros e Revistas.

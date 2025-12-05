@@ -1,9 +1,9 @@
 package Controller;
 
 import DAO.AcervoRepositorio;
-import Exception.*; 
-import Model.Livro;
-import Model.Revista;
+import Exception.*;
+import model_temp.Livro;
+import model_temp.Revista;
 
 public class FormLivroController {
 

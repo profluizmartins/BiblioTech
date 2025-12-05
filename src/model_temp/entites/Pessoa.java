@@ -1,4 +1,4 @@
-package model.entites;
+package model_temp.entites;
 
 /**
  * Classe abstrata que representa a entidade base Pessoa.

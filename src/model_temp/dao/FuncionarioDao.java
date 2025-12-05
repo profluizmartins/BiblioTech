@@ -1,8 +1,8 @@
-package model.dao;
+package model_temp.dao;
 
 import java.util.ArrayList;
 
-import model.entites.Funcionario;
+import model_temp.entites.Funcionario;
 
 /**
  * DAO responsável por armazenar, recuperar e remover funcionários.

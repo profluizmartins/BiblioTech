@@ -1,7 +1,7 @@
-package model;
+package model_temp;
 
-import model.dao.FuncionarioDao;
-import model.entites.Funcionario;
+import model_temp.dao.FuncionarioDao;
+import model_temp.entites.Funcionario;
 
 public class Teste {
 	/*
