@@ -128,18 +128,5 @@ public class PainelGestaoAcervo extends JPanel {
             modeloTabela.addRow(linha);
         }
     }
-
-    /* --- MÉTODO MAIN (Só para TESTAR essa tela) ---
-    public static void main(String[] args) {
-        JFrame janelaTeste = new JFrame("Teste do Grupo 2");
-        janelaTeste.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        janelaTeste.setSize(600, 400); 
-        
-        PainelGestaoAcervo meuPainel = new PainelGestaoAcervo();
-        janelaTeste.add(meuPainel);
-
-        janelaTeste.setVisible(true);
-    }
-    */
-
+    
 }
