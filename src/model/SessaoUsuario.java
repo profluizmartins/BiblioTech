@@ -17,11 +17,11 @@ public class SessaoUsuario {
 
     /**
      * Retorna a instância da sessão do usuário. Caso não exista instância, ela será criada.
-     * 
+     * Adicionado 'synchronized' para evitar problemas se múltiplos processos tentarem acessar ao mesmo tempo.
      * @return Instância única de {@code SessaoUsuario}.
      */
 
-    public static SessaoUsuario getInstance() {
+    public static synchronized SessaoUsuario getInstance() {
         if (instance == null) {
             instance = new SessaoUsuario();
         }
@@ -37,14 +37,20 @@ public class SessaoUsuario {
     public void logar(Funcionario f) {
         this.funcionarioLogado = f;
     }
-
+    /**
+     * Remove o usuário da sessão.
+     * 
+     */
+    public void logout() {
+        this.funcionarioLogado = null;
+    }
     /**
      * Retorna o funcionário atualmente "logado".
      * 
      * @return Funcionário "logado" ou {@code null}, caso não haja funcionário "logado".
     */
 
-    public Funcionario getFuncionario() {
+    public Funcionario getFuncionarioLogado() {
         return funcionarioLogado;
     }
 }
