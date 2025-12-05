@@ -7,6 +7,10 @@ import model.ItemAcervo;
 import model.dao.AcervoRepositorio;
 
 /**
+ * @author Grupo 2 
+ */
+
+/**
  * Controlador responsável por gerenciar as ações do Painel de Acervo (Listagem e Exclusão).
  */
 public class AcervoController {

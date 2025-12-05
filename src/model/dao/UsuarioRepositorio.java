@@ -1,8 +1,9 @@
-
-package model;
+package model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Usuario;
 
 /**
  * Classe Repositório (DAO - Data Access Object) para a entidade Usuario.

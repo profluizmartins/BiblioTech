@@ -7,6 +7,10 @@ import model.Livro;
 import model.Revista;
 import model.dao.AcervoRepositorio;
 
+/**
+ * @author Grupo 2 
+ */
+
 public class FormLivroController {
 
     private AcervoRepositorio repositorio;

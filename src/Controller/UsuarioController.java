@@ -11,7 +11,11 @@ import Exceptions.ValidacaoException;
 import Exceptions.OperacaoNaoPermitidaException;
 
 import model.Usuario;
-import model.UsuarioRepositorio;
+import model.dao.UsuarioRepositorio;
+
+/**
+ * @author Grupo 2 
+ */
 
 public class UsuarioController {
 

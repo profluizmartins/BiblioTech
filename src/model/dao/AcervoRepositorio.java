@@ -8,6 +8,10 @@ import model.ItemAcervo;
 import model.Livro;
 
 /**
+ * @author Grupo 2 
+ */
+
+/**
  * Repositório em memória para guardar Livros e Revistas.
  */
 public class AcervoRepositorio {

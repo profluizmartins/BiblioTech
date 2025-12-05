@@ -4,7 +4,7 @@ import Exceptions.ISBNInvalidoException;
 import Exceptions.ValidacaoException;
 
 /**
- * author Grupo 2
+ * author Grupo 2 
  * @version 3.0 - 26/11/2025
  */
  

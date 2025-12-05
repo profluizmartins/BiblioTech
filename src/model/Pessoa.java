@@ -1,4 +1,4 @@
-package model;
+package model; // Corrigido por João Victor - Grupo 2
 
 /**
  * Classe abstrata que representa a entidade base Pessoa.
