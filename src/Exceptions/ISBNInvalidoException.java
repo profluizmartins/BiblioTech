@@ -1,4 +1,4 @@
-package Exception;
+package Exceptions;
 
 public class ISBNInvalidoException extends Exception {
     public ISBNInvalidoException(String mensagem) {

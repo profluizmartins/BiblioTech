@@ -1,10 +1,10 @@
 package Controller;
 
 import java.util.List;
-import DAO.AcervoRepositorio; // Importa o DAO
-import Exception.ItemNaoEncontradoException;
-import Exception.OperacaoNaoPermitidaException;
-import model_temp.ItemAcervo;
+import Exceptions.ItemNaoEncontradoException;
+import Exceptions.OperacaoNaoPermitidaException;
+import model.ItemAcervo;
+import model.dao.AcervoRepositorio;
 
 /**
  * Controlador responsável por gerenciar as ações do Painel de Acervo (Listagem e Exclusão).

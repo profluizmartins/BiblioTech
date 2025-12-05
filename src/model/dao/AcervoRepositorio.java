@@ -1,11 +1,11 @@
-package DAO;
+package model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Exception.ItemJaCadastradoException;
-import model_temp.ItemAcervo;
-import model_temp.Livro;
+import Exceptions.ItemJaCadastradoException;
+import model.ItemAcervo;
+import model.Livro;
 
 /**
  * Repositório em memória para guardar Livros e Revistas.

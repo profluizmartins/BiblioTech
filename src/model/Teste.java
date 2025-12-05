@@ -1,10 +1,10 @@
-package model_temp;
+package model;
 
-import model_temp.dao.FuncionarioDao;
-import model_temp.entites.Funcionario;
+import model.dao.FuncionarioDao;
+import model.entites.Funcionario;
 
 public class Teste {
-	/*
+
 
     public static void main(String[] args) {
 
@@ -17,5 +17,5 @@ public class Teste {
 
         System.out.println(FuncionarioDao.listar());
 	}
-	*/
+
 }

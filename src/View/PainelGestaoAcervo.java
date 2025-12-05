@@ -9,7 +9,7 @@ import java.util.List;
 
 // Imports necessários
 import Controller.AcervoController;
-import model_temp.ItemAcervo;
+import model.ItemAcervo;
 
 public class PainelGestaoAcervo extends JPanel {
 

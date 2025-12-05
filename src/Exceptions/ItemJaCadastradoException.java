@@ -1,4 +1,4 @@
-package Exception;
+package Exceptions;
 
 public class ItemJaCadastradoException extends Exception {
     public ItemJaCadastradoException(String mensagem) {

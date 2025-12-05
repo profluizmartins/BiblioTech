@@ -1,5 +1,5 @@
 
-package model_temp;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;

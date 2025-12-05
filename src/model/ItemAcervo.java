@@ -1,7 +1,7 @@
-package model_temp;
+package model;
 
-import Exception.CampoObrigatorioException;
-import Exception.ValidacaoException;
+import Exceptions.CampoObrigatorioException;
+import Exceptions.ValidacaoException;
 
 /**
  * @author Grupo 2 

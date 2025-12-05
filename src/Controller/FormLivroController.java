@@ -1,9 +1,11 @@
 package Controller;
 
-import DAO.AcervoRepositorio;
-import Exception.*;
-import model_temp.Livro;
-import model_temp.Revista;
+import Exceptions.CampoObrigatorioException;
+import Exceptions.ISBNInvalidoException;
+import Exceptions.ValidacaoException;
+import model.Livro;
+import model.Revista;
+import model.dao.AcervoRepositorio;
 
 public class FormLivroController {
 

@@ -1,7 +1,7 @@
-package model_temp;
-import Exception.CampoObrigatorioException;
-import Exception.ISBNInvalidoException;
-import Exception.ValidacaoException;
+package model;
+import Exceptions.CampoObrigatorioException;
+import Exceptions.ISBNInvalidoException;
+import Exceptions.ValidacaoException;
 
 /**
  * author Grupo 2
