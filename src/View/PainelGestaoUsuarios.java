@@ -82,10 +82,19 @@ public class PainelGestaoUsuarios extends JPanel implements IModulo {
             }
 
             String cpf = modeloTabela.getValueAt(index, 2).toString();
-            Usuario usuario = controller.buscarUsuarioPorCpf(cpf);
 
-            FormularioUsuario form = new FormularioUsuario(usuario, controller, this);
-            form.setVisible(true);
+            try {
+                // Tenta buscar o usuário
+                Usuario usuario = controller.buscarUsuarioPorCpf(cpf);
+
+                // Se deu certo, abre o formulário
+                FormularioUsuario form = new FormularioUsuario(usuario, controller, this);
+                form.setVisible(true);
+
+            } catch (Exception ex) {
+                // Se der erro, mostra o alerta na tela
+                JOptionPane.showMessageDialog(null, "Erro ao carregar usuário: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         btnExcluir.addActionListener(e -> {
