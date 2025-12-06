@@ -1,7 +1,8 @@
 package model;
 
 import java.time.LocalDate;
-
+import Model2.Usuario;
+import appmodel.Emprestimo;
 /**
  * Representa uma multa gerada por atraso na devolução de um item da biblioteca.
  * Esta classe compõe a camada Model e encapsula a regra de negócio para cálculo automático de valores.
