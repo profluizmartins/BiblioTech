@@ -54,30 +54,33 @@ public class EmprestimoRepositorio {
             LocalDate dataEmprestimo,
             LocalDate dataPrevistaDevolucao) {
 
-        // Regra 1: item não pode estar emprestado
-        for (Emprestimo e : emprestimos) {
-            if (e.getItem().equals(item) && e.getStatus() == StatusEmprestimo.ATIVO) {
-                throw new IllegalArgumentException(
-                        "O item '" + item.getTitulo() + "' já está emprestado e não pode ser emprestado novamente.");
-            }
+        // Regra: item não pode estar emprestado
+        boolean itemEmprestado = emprestimos.stream()
+                .anyMatch(e -> e.getItem().equals(item)
+                        && e.getStatus() == StatusEmprestimo.ATIVO);
+
+        if (itemEmprestado) {
+            throw new IllegalArgumentException(
+                    "O item '" + item.getTitulo() + "' já está emprestado.");
         }
 
-        // Regra 2: limitar empréstimos ativos por usuário (máximo de 3)
-        long emprestimosAtivosUsuario = emprestimos.stream()
-                .filter(e -> e.getUsuario().equals(usuario) && e.getStatus() == StatusEmprestimo.ATIVO)
+        // Regra: checar limite do usuário
+        long ativos = emprestimos.stream()
+                .filter(e -> e.getUsuario().equals(usuario)
+                        && e.getStatus() == StatusEmprestimo.ATIVO)
                 .count();
 
-        if (emprestimosAtivosUsuario >= 3) {
+        if (ativos >= 3) {
             throw new IllegalArgumentException(
-                    "O usuário '" + usuario.getNome() + "' já possui o número máximo de empréstimos ativos.");
+                    "O usuário '" + usuario.getNome() + "' já possui o limite de empréstimos.");
         }
 
-        // Regra 3: definir automaticamente data prevista se não for informada
+        // Definir data prevista automaticamente
         if (dataPrevistaDevolucao == null) {
             dataPrevistaDevolucao = dataEmprestimo.plusDays(7);
         }
 
-        // Criação e cadastro do empréstimo
+        // Criar objeto
         Emprestimo emp = new Emprestimo(
                 proximoId++,
                 usuario,
