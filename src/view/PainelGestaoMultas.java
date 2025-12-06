@@ -53,14 +53,14 @@ public class PainelGestaoMultas extends JPanel {
      * Inicializa os componentes gráficos do painel.
      */
     private void inicializarComponentes() {
-        // Modelo da tabela
+        
         tabelaModel = new DefaultTableModel(
                 new Object[]{"ID", "Usuário", "Item", "Valor (R$)", "Data da Multa"},
-                0 // 0 linhas iniciais
+                0 
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Tabela somente leitura
+                return false; 
             }
         };
 
@@ -96,7 +96,7 @@ public class PainelGestaoMultas extends JPanel {
      * Carrega na JTable todas as multas pendentes obtidas do controller.
      */
     public void carregarDadosTabela() {
-        tabelaModel.setRowCount(0); // limpa a tabela
+        tabelaModel.setRowCount(0); 
 
         List<Multa> pendentes = multaController.listarMultasPendentes();
         for (Multa multa : pendentes) {
@@ -128,7 +128,7 @@ public class PainelGestaoMultas extends JPanel {
         );
 
         if (input == null) {
-            return; // usuário cancelou
+            return; 
         }
 
         input = input.trim();
@@ -154,11 +154,9 @@ public class PainelGestaoMultas extends JPanel {
             );
             return;
         }
-
-        // Chama o controller para registrar pagamento (com JOptionPane interno)
+       
         multaController.registrarPagamento(idMulta);
 
-        // Recarrega a tabela após tentativa de pagamento
         carregarDadosTabela();
     }
 }

@@ -55,24 +55,19 @@ public class MultaController {
      */
     public Multa gerarMultaPorAtraso(Emprestimo emprestimo, int diasAtraso, double valorMultaDiaria) {
         if (emprestimo == null || diasAtraso <= 0) {
-            return null; // nada a fazer
+            return null; 
         }
-
         Usuario usuario = emprestimo.getUsuario();
         if (usuario == null) {
-            return null; // segurança extra
+            return null;
         }
 
-        // Gera ID único para a multa
         int novoId = multaRepositorio.gerarId();
 
-        // Cria a multa usando a lógica de negócio definida no Model
         Multa multa = new Multa(novoId, usuario, emprestimo, diasAtraso, valorMultaDiaria);
 
-        // Salva no "banco de dados" em memória
         multaRepositorio.salvar(multa);
 
-        // Atualiza o status do usuário para SUSPENSOPORMULTA
         usuario.setStatus(Usuario.TipoStatus.SUSPENSOPORMULTA);
         usuarioRepositorio.atualizar(usuario);
 
@@ -138,22 +133,19 @@ public class MultaController {
         Multa multa = multaRepositorio.buscarPorId(idMulta);
 
         if (multa == null) {
-            // Nenhuma multa encontrada com esse ID
+
             throw new MultaNaoEncontradaException(idMulta);
         }
 
         if (multa.getStatus() == StatusMulta.PAGA) {
-            // A multa existe, mas já foi paga anteriormente
+       
             throw new MultaJaPagaException();
         }
 
-        // Se chegou até aqui, a multa existe e está pendente
         Usuario usuario = multa.getUsuario();
 
-        // Marca como paga
         multa.setStatus(StatusMulta.PAGA);
 
-        // Mensagem de sucesso (valor e ID)
         String msgSucesso = String.format(
                 "Pagamento da multa %d no valor de R$ %.2f registrado com sucesso.",
                 multa.getId(),
@@ -167,15 +159,13 @@ public class MultaController {
                 JOptionPane.INFORMATION_MESSAGE
         );
 
-        // Verifica se ainda restam multas pendentes para o usuário
         boolean aindaTemPendentes = multaRepositorio.usuarioTemPendentes(usuario);
 
         if (!aindaTemPendentes) {
-            // Atualiza status do usuário para ATIVO
+
             usuario.setStatus(Usuario.TipoStatus.ATIVO);
             usuarioRepositorio.atualizar(usuario);
 
-            // Mensagem de alerta exigida no enunciado
             String msgAlerta = String.format(
                     "Este era o último débito do usuário '%s'. O status dele foi atualizado para 'Ativo'.",
                     usuario.getNome()
