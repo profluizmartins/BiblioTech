@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.MockUsuario;
+import model.MockUsuario;
 
 public class MockMultaController {
     public double calcularMulta(MockUsuario mockUsuario, int diasAtraso) {
