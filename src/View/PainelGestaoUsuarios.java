@@ -1,6 +1,7 @@
 package View;
 
 import Controller.UsuarioController;
+import contracts.IModulo;
 import model.Usuario;
 
 import javax.swing.*;
@@ -139,5 +140,11 @@ public class PainelGestaoUsuarios extends JPanel implements IModulo {
                     u.getStatus()
             });
         }
+    }
+
+    @Override
+    public String getTitulo() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTitulo'");
     }
 }
