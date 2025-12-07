@@ -22,13 +22,13 @@ import java.awt.event.ActionListener;
  * @version 1.0
  */
 public class DevolucaoController {
-    private MockEmprestimoDao Edao;
+    private EmprestimoDao Edao;
     private Devolucao dao;
     private PainelDevolucao view;
-    private MockMultaController multacontrol;
-    private MockEmprestimo mockEmprestimo;
-    private MockItemAcervo acervo;
-    private List<MockItemAcervo> listaAcervo;
+    private MultaController multacontrol;
+    private Emprestimo Emprestimo;
+    private ItemAcervo acervo;
+    private List<ItemAcervo> listaAcervo;
     /**
      * Método construtor da classe DevolucaoController
      *
@@ -38,10 +38,10 @@ public class DevolucaoController {
      *
      */
 
-    private MockItemAcervo itemParaDevolucao = null;
+    private ItemAcervo itemParaDevolucao = null;
     private int idParaDevolucao = -1;
 
-    public DevolucaoController(Devolucao dao, PainelDevolucao view, MockMultaController multacontrol, List<MockItemAcervo> listaAcervo) {
+    public DevolucaoController(Devolucao dao, PainelDevolucao view, MultaController multacontrol, List<ItemAcervo> listaAcervo) {
         this.dao = dao;
         this.view = view;
         this.multacontrol = multacontrol;
@@ -53,8 +53,8 @@ public class DevolucaoController {
             public void actionPerformed(ActionEvent e) {
                 try {
                     int idDigitado = Integer.parseInt(view.gettxtIdItem());
-                    MockItemAcervo itemEncontradoTemp = null;
-                    for (MockItemAcervo item : listaAcervo) {
+                    ItemAcervo itemEncontradoTemp = null;
+                    for (ItemAcervo item : listaAcervo) {
                         if (item.getId() == idDigitado) {
                             itemEncontradoTemp = item;
                             break;
@@ -109,18 +109,18 @@ public class DevolucaoController {
      *
      * @return valor da multa, se houver uma multa
      */
-    public double realizarDevolucao(int idItem, MockItemAcervo acervo) throws ItemJaDevolvidoException {
+    public double realizarDevolucao(int idItem, ItemAcervo acervo) throws ItemJaDevolvidoException {
         int id = 0;
         double valordamulta = 0;
         int diasAtraso = 0;
 
-        MockReserva reserva = null;
-        MockEmprestimo mockEmprestimo = MockEmprestimoDao.buscarPorId(idItem);
+        Reserva reserva = null;
+        Emprestimo Emprestimo = EmprestimoDao.buscarPorId(idItem);
 
         try {
-            if (mockEmprestimo == null) {
+            if (Emprestimo == null) {
                 throw new EmprestimoNaoEncontradoException("Devolução falhou: Não há nenhum empréstimo ativo registrado para o item com ID " + idItem);
-            } else if (mockEmprestimo.getStatusDevolvido()) {
+            } else if (Emprestimo.getStatusDevolvido()) {
                 throw new ItemJaDevolvidoException("O Item já foi devolvido.");
             }
         } catch (ItemJaDevolvidoException ex) {
@@ -130,11 +130,11 @@ public class DevolucaoController {
             return 0;
         }
 
-        if (!mockEmprestimo.getStatusDevolvido()) {
-            mockEmprestimo.setStatusDevolvido(true);
-            diasAtraso = dao.CalcularAtraso(mockEmprestimo);
-            MockUsuario mockUsuario = mockEmprestimo.getUsuario();
-            valordamulta = multacontrol.calcularMulta(mockUsuario, diasAtraso);
+        if (!Emprestimo.getStatusDevolvido()) {
+            Emprestimo.setStatusDevolvido(true);
+            diasAtraso = dao.CalcularAtraso(Emprestimo);
+            Usuario Usuario = Emprestimo.getUsuario();
+            valordamulta = multacontrol.calcularMulta(Usuario, diasAtraso);
             /*if(reserva.getStatus() == 1){
                 acervo.setStatusReservado(true);
                 acervo.setStatusDisponivel(false);
@@ -145,7 +145,7 @@ public class DevolucaoController {
             acervo.setStatusDisponivel(true);
             view.msg("Devolução registrada com sucesso para o item " + acervo.getTitulo(), "Sucesso");
             if (valordamulta > 0) {
-                view.msg("Devolução registrada com ATRASO! Uma multa de R$ " + valordamulta + " foi gerada para o usuário " + mockUsuario.getNome(), "Multa por atraso");
+                view.msg("Devolução registrada com ATRASO! Uma multa de R$ " + valordamulta + " foi gerada para o usuário " + Usuario.getNome(), "Multa por atraso");
             }
             acervo.setStatusEmprestado(false);
         }

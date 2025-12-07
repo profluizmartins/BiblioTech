@@ -2,7 +2,7 @@ package View;
 
 import Controller.DevolucaoController;
 import Exceptions.EmprestimoNaoEncontradoException;
-import model.MockEmprestimo;
+import model.Emprestimo;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -72,7 +72,7 @@ public class PainelDevolucao extends JPanel {
      * @return Retorna 1 se o item foi encontrado e exibido
      * @throws EmprestimoNaoEncontradoException caso não exista emprestimo
      */
-    public int mostrarEmprestimo(MockEmprestimo emprestimos) throws EmprestimoNaoEncontradoException {
+    public int mostrarEmprestimo(Emprestimo emprestimos) throws EmprestimoNaoEncontradoException {
         if (emprestimos != null) {
             String detalhes =
                     "ID: " + emprestimos.getIdItem() + "\n" +

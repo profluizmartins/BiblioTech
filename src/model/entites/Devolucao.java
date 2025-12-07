@@ -1,6 +1,6 @@
 package model.entites;
 
-import model.MockEmprestimo;
+import model.Emprestimo;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -21,21 +21,21 @@ public class Devolucao {
     /**
      * Método que calcula quantos dias há de atraso
      *
-     * @param mockEmprestimo Emprestimo do item
+     * @param Emprestimo Emprestimo do item
      *
      * @return Retorna quantos dias há de atraso, ou retorna 0 se não há dias de atraso
      */
-    public int CalcularAtraso(MockEmprestimo mockEmprestimo) {
+    public int CalcularAtraso(Emprestimo Emprestimo) {
        LocalDate dataAtual = LocalDate.now();
-       LocalDate dataDevolucao = mockEmprestimo.getDataDevolucao();
-       boolean statusAtrasado = mockEmprestimo.getStatusDevolvido();
+       LocalDate dataDevolucao = Emprestimo.getDataDevolucao();
+       boolean statusAtrasado = Emprestimo.getStatusDevolvido();
 
         if (dataDevolucao.isBefore(dataAtual)) {
-            mockEmprestimo.setStatusAtrasado(true);
+            Emprestimo.setStatusAtrasado(true);
             long diferenca = ChronoUnit.DAYS.between(dataDevolucao, dataAtual);
             return(int) diferenca;
         } else {
-            mockEmprestimo.setStatusAtrasado(false);
+            Emprestimo.setStatusAtrasado(false);
         }
         return 0;
     }
