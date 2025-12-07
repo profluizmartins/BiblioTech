@@ -1,0 +1,10 @@
+/.idea/
+/src/model/MockEmprestimo.java
+/src/model/MockEmprestimoDao.java
+/src/model/MockItemAcervo.java
+/src/model/MockReserva.java
+/src/model/MockUsuario.java
+/src/Controller/MockEmprestimoController.java
+/src/Controller/MockMultaController.java
+/src/Controller/MockReservaController.java
+/src/Main.java
