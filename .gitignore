@@ -1,4 +1,3 @@
-/.settings/
 /.idea/
 /src/model/MockEmprestimo.java
 /src/model/MockEmprestimoDao.java
