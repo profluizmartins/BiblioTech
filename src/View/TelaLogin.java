@@ -1,10 +1,10 @@
-package view;
+package View;
 
 import javax.swing.*;
 import java.awt.*;
 
-import controller.LoginController;
-import exception.*;
+import Controller.LoginController;
+import Exceptions.*;
 import model.Funcionario;
 import model.SessaoUsuario;
 
