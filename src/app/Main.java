@@ -4,7 +4,8 @@ package app;
 import model.Funcionario;
 import model.SessaoUsuario;
 import View.TelaLogin;
-
+//LOGIN TESTE: admin
+//SENHA TESTE: 123
 public class Main {
     public static void main(String[] args) {
         /* 
