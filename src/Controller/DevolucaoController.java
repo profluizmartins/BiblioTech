@@ -135,12 +135,12 @@ public class DevolucaoController {
             diasAtraso = dao.CalcularAtraso(Emprestimo);
             Usuario Usuario = Emprestimo.getUsuario();
             valordamulta = multacontrol.calcularMulta(Usuario, diasAtraso);
-            /*if(reserva.getStatus() == 1){
+            if(reserva.getStatus() == 1){
                 acervo.setStatusReservado(true);
                 acervo.setStatusDisponivel(false);
                 view.msg("Devolução registrada. O item " + acervo.getTitulo() + " foi automaticamente direcionado\n" +
                         "para a reserva do usuário " + reserva.getUsuario(), "Sucesso");
-            }*/
+            }
             acervo.setStatusReservado(false);
             acervo.setStatusDisponivel(true);
             view.msg("Devolução registrada com sucesso para o item " + acervo.getTitulo(), "Sucesso");
