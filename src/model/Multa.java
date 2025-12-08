@@ -44,12 +44,10 @@ public class Multa {
         this.id = id;
         this.usuario = usuario;
         this.emprestimo = emprestimo;
-        this.dataMulta = LocalDate.now(); // Define a data de hoje automaticamente
+        this.dataMulta = LocalDate.now();
         
-        // REGRA DE NEGÓCIO: O cálculo deve ser feito no Model
         this.valor = calcularMulta(diasAtraso, valorMultaDiaria);
         
-        // Toda multa nasce como Pendente
         this.status = StatusMulta.PENDENTE;
     }
 
