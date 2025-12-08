@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import Model2.Usuario;
-import Model2.UsuarioRepositorio;
-import appmodel.Emprestimo;
+import Model.Usuario;
+import Model.UsuarioRepositorio;
+import app.model.Emprestimo;
 import exceptions.MultaJaPagaException;
 import exceptions.MultaNaoEncontradaException;
 import model.Multa;
@@ -57,12 +57,10 @@ public class MultaController {
         if (emprestimo == null || diasAtraso <= 0) {
             return null; 
         }
-
         Usuario usuario = emprestimo.getUsuario();
         if (usuario == null) {
             return null;
         }
-        
         int novoId = multaRepositorio.gerarId();
 
         Multa multa = new Multa(novoId, usuario, emprestimo, diasAtraso, valorMultaDiaria);
@@ -134,12 +132,11 @@ public class MultaController {
         Multa multa = multaRepositorio.buscarPorId(idMulta);
 
         if (multa == null) {
-        
             throw new MultaNaoEncontradaException(idMulta);
         }
 
         if (multa.getStatus() == StatusMulta.PAGA) {
-
+       
             throw new MultaJaPagaException();
         }
 

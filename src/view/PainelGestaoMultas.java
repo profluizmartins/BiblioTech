@@ -128,7 +128,7 @@ public class PainelGestaoMultas extends JPanel {
         );
 
         if (input == null) {
-            return;
+            return; 
         }
 
         input = input.trim();
@@ -154,7 +154,7 @@ public class PainelGestaoMultas extends JPanel {
             );
             return;
         }
-
+       
         multaController.registrarPagamento(idMulta);
 
         carregarDadosTabela();

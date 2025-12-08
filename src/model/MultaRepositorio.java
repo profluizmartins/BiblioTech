@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import Model2.Usuario;
+import Model.Usuario;
 
 
 /**
