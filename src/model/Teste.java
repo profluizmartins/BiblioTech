@@ -1,8 +1,5 @@
 package model;
 
-import model.dao.FuncionarioDao;
-import model.entites.Funcionario;
-
 public class Teste {
     public static void main(String[] args) {
 
@@ -11,8 +8,8 @@ public class Teste {
                 "ana", "senha123", "Admin"
         );
 
-        FuncionarioDao.adicionar(f);
+        FuncionarioRepositorio.adicionar(f);
 
-        System.out.println(FuncionarioDao.listar());
+        System.out.println(FuncionarioRepositorio.listar());
 }
 }
