@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import Model2.Usuario;
+
 
 /**
  * Repositório em memória para gerenciar as Multas do sistema.
