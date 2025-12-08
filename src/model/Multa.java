@@ -1,7 +1,8 @@
 package model;
 
 import java.time.LocalDate;
-
+import Model.Usuario;
+import app.model.Emprestimo;
 /**
  * Representa uma multa gerada por atraso na devolução de um item da biblioteca.
  * Esta classe compõe a camada Model e encapsula a regra de negócio para cálculo automático de valores.
@@ -43,12 +44,10 @@ public class Multa {
         this.id = id;
         this.usuario = usuario;
         this.emprestimo = emprestimo;
-        this.dataMulta = LocalDate.now(); // Define a data de hoje automaticamente
+        this.dataMulta = LocalDate.now();
         
-        // REGRA DE NEGÓCIO: O cálculo deve ser feito no Model
         this.valor = calcularMulta(diasAtraso, valorMultaDiaria);
         
-        // Toda multa nasce como Pendente
         this.status = StatusMulta.PENDENTE;
     }
 
