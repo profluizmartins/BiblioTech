@@ -16,7 +16,6 @@ import java.util.List;
  * do usuário (Matrícula e ID do Item) e exibir os resultados (Tabela de Reservas
  * ou mensagens de erro/sucesso).
  * <p>
- * Segue o padrão MVC, delegando a lógica de negócio para o {@link controller.ReservaController}.
  */
 public class PainelReserva extends JPanel {
 
@@ -199,4 +198,5 @@ public class PainelReserva extends JPanel {
             });
         }
     }
+
 }
