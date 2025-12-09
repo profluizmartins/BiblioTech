@@ -140,9 +140,10 @@ public class DevolucaoController {
                 acervo.setStatusDisponivel(false);
                 view.msg("Devolução registrada. O item " + acervo.getTitulo() + " foi automaticamente direcionado\n" +
                         "para a reserva do usuário " + reserva.getUsuario(), "Sucesso");
+            }else{
+                acervo.setStatusReservado(false);
+                acervo.setStatusDisponivel(true);
             }
-            acervo.setStatusReservado(false);
-            acervo.setStatusDisponivel(true);
             view.msg("Devolução registrada com sucesso para o item " + acervo.getTitulo(), "Sucesso");
             if (valordamulta > 0) {
                 view.msg("Devolução registrada com ATRASO! Uma multa de R$ " + valordamulta + " foi gerada para o usuário " + Usuario.getNome(), "Multa por atraso");
